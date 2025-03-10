@@ -19,7 +19,7 @@ deploy:
         mirror -R --delete \
           --exclude-glob .git* \
           --exclude .gitignore \
-          --exclude ss/ \
+          --exclude web_dotIN/ \
           ./ public_html/;
         bye;
       "
