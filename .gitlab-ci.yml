@@ -12,12 +12,16 @@ deploy:
   stage: deploy
   image: debian:latest  # Debian-based image that supports apt-get
   before_script:
-    - apt-get update && apt-get install -y apt-utils lftp
+    - apt-get update && apt-get install -y lftp
   script:
-    - lftp -e "
+    - lftp -c "
         open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST;
-        mirror -R --delete --exclude-glob .git* --exclude .gitignore ./ public_html/;
+        mirror -R --delete \
+          --exclude-glob .git* \
+          --exclude .gitignore \
+          --exclude ss/ \
+          ./ public_html/;
         bye;
       "
   only:
-    - shaurya  # Change this to 'main' if needed
+    - main  # Deploy only from the main branch (change if needed)
