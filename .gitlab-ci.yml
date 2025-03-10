@@ -24,4 +24,4 @@ deploy:
         bye;
       "
   only:
-    - main  # Deploy only from the main branch (change if needed)
+    - shaurya  # Deploy only from the main branch (change if needed)
