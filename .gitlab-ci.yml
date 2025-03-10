@@ -16,7 +16,7 @@ deploy:
   script:
     - lftp -e "
         open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST;
-        mirror -R --delete --exclude-glob .git* --exclude .gitignore ./ public_html/web_dotIN/;
+        mirror -R --delete --exclude-glob .git* --exclude .gitignore ./ public_html/;
         bye;
       "
   only:
